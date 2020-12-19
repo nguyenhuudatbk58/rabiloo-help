@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rabiloo help</title>
+</head>
+<body>
+	<button onclick="subcribe()">Subcribe</button>
+
+	<script>
+		addEventListener('load',async () => {
+			let sw = navigator.serviceWorker.register("./sw.js");
+			console.log(sw);
+		});
+
+		async function subcribe(){
+			let sw = await navigator.serviceWorker.ready;
+			let push = await sw.pushManager.subcribe({
+				 userVisibileOnly: true,
+				 applicationServerKey: 'BEis3o6KKe0YrX78UBIXVZ4wYWuB3HC0sbD1eI6OjdEb9QSHGXwYFjAlVkkZL_t2swgbAMsoVdq9lSiDrhZPov8'
+			});
+
+			console.log(push);
+		}
+	</script>
+</body>
+</html>
